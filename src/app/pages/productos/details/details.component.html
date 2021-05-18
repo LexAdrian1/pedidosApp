@@ -1,0 +1,24 @@
+<div class="card mt-2">
+    <div class="card-header">
+      Producto Detalles
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            Email: <h5>{{producto.email}} </h5>
+        </li>
+        <li class="list-group-item">
+            Fecha_Creacion: <h5>{{producto.Fecha_Creacion}}</h5>
+        </li>
+        <li class="list-group-item">
+            Fecha_Modificacion: <h5>{{producto.Fecha_Modificacion}}</h5>
+        </li>
+      </ul>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-outline-warning m-1 btn-sm" (click)="onGoToEdit()">Edit</button>
+      <button type="button" class="btn btn-outline-danger m-1 btn-sm" (click)="onGoToDelete()">Delete</button>
+    </div>
+  </div>
+  <button type="button" class="btn btn-secondary mt-2" (click)="onGoBackToList()">Go Back to list</button>
+  
