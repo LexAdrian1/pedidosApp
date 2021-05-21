@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -81,10 +83,19 @@ export class ListComponent implements OnInit {
     }
   };
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.user_j = this.users.ttAllUsers;
+    this.http.get('http://localhost:8810/Pedidos/rest/PedidosService/Productos')
+    .subscribe(data => { 
+     let jsonText = JSON.stringify(data);
+     let subJson = jsonText.split('[');
+     let subJson2 = subJson[1].split(']')[0];
+     let jsonProductos = JSON.parse('[' + subJson2 + ']');
+     this.user_j = jsonProductos;
+     console.log(jsonProductos);
+    });
+
   }
 
   onGoToEdit(item: any): void {
@@ -99,6 +110,9 @@ export class ListComponent implements OnInit {
 
   onGoToDelete(empId: string): void {
     try {
+      this.http.delete('http://localhost:8810/Pedidos/rest/PedidosService/Productos/'+ empId).subscribe(
+      result => console.log(result),
+      err => console.error(err));
       alert('Deleted');
     } catch (err) {
       console.log(err);

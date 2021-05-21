@@ -2,8 +2,11 @@
     <table class="table table-hover">
       <thead>
         <tr>
-            <td>ID_Usuario</td>
-            <td>Email</td>
+            <td>ID_Producto</td>
+            <td>Nombre</td>
+            <td>Descripcion</td>
+            <td>Precio_Unitario</td>
+            <td>Stock</td>
             <td>Fecha_Creacion</td>
             <td>Fecha_Modificacion</td>
           <th class="d-none d-sm-block" scope="col">Actions</th>
@@ -11,14 +14,17 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of user_j">
-            <td>{{item.email}}</td>
-            <td>{{item.ID_Usuario}}</td>
+            <td>{{item.ID_Producto}}</td>
+            <td>{{item.Nombre}}</td>
+            <td>{{item.Descripcion}}</td>
+            <td>{{item.Precio_Unitario}}</td>
+            <td>{{item.Stock}}</td>
             <td>{{item.Fecha_Creacion}}</td>
             <td>{{item.Fecha_Modificacion}}</td>
             <td class="bnt-group d-none d-sm-block" role="group">
             <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(item)">Edit</button>
             <button type="button" class="btn btn-outline-info m-1" (click)="onGoToSee(item)">Details</button>
-            <button type="button" class="btn btn-outline-danger m-1" (click)="onGoToDelete(item.ID_Usuario)">Delete</button>
+            <button type="button" class="btn btn-outline-danger m-1" (click)="onGoToDelete(item.ID_Producto)">Delete</button>
             </td>
         </tr>
       </tbody>

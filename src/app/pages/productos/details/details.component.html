@@ -5,7 +5,16 @@
     <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-            Email: <h5>{{producto.email}} </h5>
+            Nombre: <h5>{{producto.Nombre}} </h5>
+        </li>
+        <li class="list-group-item">
+            Descripcion: <h5>{{producto.Descripcion}} </h5>
+       </li> 
+       <li class="list-group-item">
+            Precio_Unitario: <h5>{{producto.Precio_Unitario}} </h5>
+        </li>
+        <li class="list-group-item">
+            Stock: <h5>{{producto.Stock}} </h5>
         </li>
         <li class="list-group-item">
             Fecha_Creacion: <h5>{{producto.Fecha_Creacion}}</h5>
@@ -13,6 +22,7 @@
         <li class="list-group-item">
             Fecha_Modificacion: <h5>{{producto.Fecha_Modificacion}}</h5>
         </li>
+        
       </ul>
     </div>
     <div class="btn-group" role="group">
@@ -20,5 +30,5 @@
       <button type="button" class="btn btn-outline-danger m-1 btn-sm" (click)="onGoToDelete()">Delete</button>
     </div>
   </div>
-  <button type="button" class="btn btn-secondary mt-2" (click)="onGoBackToList()">Go Back to list</button>
+  <button type="button" class="btn btn-secondary mt-2" (click)="onGoBackToList()">Return</button>
   

@@ -1,18 +1,26 @@
 <form class="mt-3 col-md-8 offset-md-2" (ngSubmit)="onSave()" [formGroup]="productForm">
     <div class="form-row">
       <div class="form-group col-md-6">
-        <input type="text" class="form-control" placeholder="ID_Usuario" formControlName="ID_Usuario" [class]="isValidField('ID_Usuario')">
+        <input type="text" class="form-control" placeholder="ID_Producto" formControlName="ID_Producto" [class]="isValidField('ID_Producto')">
         <div class="invalid-feedback">
-          <span *ngIf="productForm.get('ID_Usuario').errors?.required">
+          <span *ngIf="productForm.get('ID_Producto').errors?.required">
             This field is required.
           </span>
         </div>
       </div>
       <div class="form-group col-md-6">
-        <input type="email" class="form-control" placeholder="email" formControlName="email"
-          [class]="isValidField('email')">
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="Nombre" [class]="isValidField('Nombre')">
         <div class="invalid-feedback">
-          <span *ngIf="productForm.get('email').errors?.required">
+          <span *ngIf="productForm.get('Nombre').errors?.required">
+            This field is required.
+          </span>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <input type="text" class="form-control" placeholder="Descripcion" formControlName="Descripcion"
+          [class]="isValidField('Descripcion')">
+        <div class="invalid-feedback">
+          <span *ngIf="productForm.get('Descripcion').errors?.required">
             This field is required.
           </span>
         </div>
@@ -20,12 +28,20 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-          <input type="password" class="form-control" placeholder="Password" formControlName="password" [class]="isValidField('password')">
+          <input type="text" class="form-control" placeholder="Precio_Unitario" formControlName="Precio_Unitario" [class]="isValidField('Precio_Unitario')">
           <div class="invalid-feedback">
-            <span *ngIf="productForm.get('password').errors?.required">
+            <span *ngIf="productForm.get('Precio_Unitario').errors?.required">
               This field is required.
             </span>
           </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <input type="text" class="form-control" placeholder="Stock" formControlName="Stock" [class]="isValidField('Stock')">
+        <div class="invalid-feedback">
+          <span *ngIf="productForm.get('Stock').errors?.required">
+            This field is required.
+          </span>
         </div>
       </div>
     <div class="form-row">
@@ -50,4 +66,4 @@
     </div>
     <button type="submit" class="btn btn-outline-primary btn-block mt-2">Save</button>
   </form>
-  <button type="button" class="btn btn-secondary mt-2" (click)="onGoBackToList()">Go Back to list</button>
+  <button type="button" class="btn btn-secondary mt-2" (click)="onGoBackToList()">Return</button>
