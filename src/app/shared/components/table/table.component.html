@@ -1,0 +1,30 @@
+<h3>Buscar Producto</h3>
+<form [formGroup]="formBusqueda">
+    <div class="row">
+        <div class="col-8">
+            <input type="search"  class="form-control form-control-dark" placeholder="Search..." formControlName="search"> 
+        </div>
+         <div class="col">
+            <button type="button" class="btn btn-outline-primary" (click)="buscar()">Buscar</button>
+         </div>
+    </div>
+</form>
+
+<div class="row">
+<div class = "col-xs-12 col-sm-6 col-md-4" *ngFor = "let producto of productos_list">
+    <div class="card border-primary mb-3 mt-3" style="max-width: 20rem;">
+        <div class="card-header">{{producto.Nombre}}</div>
+        <div class="card-body">
+        <!--<img class="card-img-top" src="...">-->
+          <h4 class="card-title">{{producto.Nombre}}</h4>
+          <p class="card-text">Descripcion: {{producto.Descripcion}}</p>
+          <p class="card-text">Precio_Unitario: {{producto.Precio_Unitario}}</p>
+          <p class="card-text">Stock: {{producto.Stock}}</p>
+          <p class="card-text">Fecha: {{producto.Fecha_Creacion}}</p>
+          <button type="button" class="btn btn-outline-info offset-md-4">Comprar</button>
+        </div>
+      </div>
+</div>
+</div>
+
+    

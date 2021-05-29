@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
 })
-export class ListComponent implements OnInit {
-  user_j: any;
+export class TableComponent implements OnInit {
+  productos_list: any;
   productos = 
   {
     "response": {
@@ -62,14 +65,21 @@ export class ListComponent implements OnInit {
             ]
         }
     }
+
 };
   navigationExtras: NavigationExtras = {
-    state: {
-      value: null
-    }
+      state: {
+        value: null
+      }
   };
 
-  constructor(private router: Router, private http: HttpClient) { }
+  formBusqueda:FormGroup
+  constructor(private router: Router, private http: HttpClient,private fb: FormBuilder) {
+
+   }
+
+   
+
 
   ngOnInit(): void {
     /*this.http.get('http://204.12.255.75:8810/Pedidos/rest/PedidosService/Productos')
@@ -85,29 +95,26 @@ export class ListComponent implements OnInit {
     let subJson = jsonText.split('[');
     let subJson2 = subJson[1].split(']')[0];
     let jsonProductos = JSON.parse('[' + subJson2 + ']');
-    this.user_j = jsonProductos;
+    this.productos_list = jsonProductos;
     console.log(jsonProductos);
+    this.initForm();
+
+    
   }
 
-  onGoToEdit(item: any): void {
-    this.navigationExtras.state.value = item;
-    this.router.navigate(['edit'], this.navigationExtras);
+  buscar(): void {
+    let cond=this.formBusqueda.controls['search'].value;
+    //let filterProducts = this.productos_list.filter(producto => producto.Nombre.toUpperCase() == cond.toUpperCase()); 
+    let filterProducts = this.productos_list.filter(producto => producto.Nombre.toLowerCase().includes(cond.toLowerCase())); 
+    this.productos_list=filterProducts;
+  }
+  
+  private initForm(): void {
+    this.formBusqueda = this.fb.group({
+     search:new FormControl('')
+    });
   }
 
-  onGoToSee(item: any): void {
-    this.navigationExtras.state.value = item;
-    this.router.navigate(['details'], this.navigationExtras);
-  }
-
-  onGoToDelete(empId: string): void {
-    try {
-      this.http.delete('http://204.12.255.75:8810/Pedidos/rest/PedidosService/Productos/'+ empId).subscribe(
-      result => console.log(result),
-      err => console.error(err));
-      alert('Deleted');
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  
 
 }

@@ -47,7 +47,7 @@ export class NewComponent implements OnInit {
       }
     };
     console.log(jsonProducto);
-    this.http.post('http://localhost:8810/Pedidos/rest/PedidosService/Productos',jsonProducto,{headers:new HttpHeaders({'Content-Type': 'application/json'})}).subscribe(
+    this.http.post('http://204.12.255.75:8810/Pedidos/rest/PedidosService/Productos',jsonProducto,{headers:new HttpHeaders({'Content-Type': 'application/json'})}).subscribe(
       result => console.log(result),
       err => console.error(err));
     this.productForm.reset();
