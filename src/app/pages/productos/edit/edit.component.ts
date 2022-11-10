@@ -52,7 +52,8 @@ export class EditComponent implements OnInit {
         }
       };
       console.log(jsonProducto);
-      this.http.put('http://204.12.255.75:8810/Pedidos/rest/PedidosService/Productos/'+productoId,jsonProducto,{headers:new HttpHeaders({'Content-Type': 'application/json'})}).subscribe(
+      // this.http.put('http://204.12.255.75:8810/Pedidos/rest/PedidosService/Productos/'+productoId,jsonProducto,{headers:new HttpHeaders({'Content-Type': 'application/json'})}).subscribe(
+        this.http.put('http://localhost:8810/Pedidos/rest/PedidosService/Productos/'+productoId,jsonProducto,{headers:new HttpHeaders({'Content-Type': 'application/json'})}).subscribe(
         result => console.log(result),
         err => console.error(err));
       this.productForm.reset();

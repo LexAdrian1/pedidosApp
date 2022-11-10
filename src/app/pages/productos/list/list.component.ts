@@ -101,7 +101,7 @@ export class ListComponent implements OnInit {
 
   onGoToDelete(empId: string): void {
     try {
-      this.http.delete('http://204.12.255.75:8810/Pedidos/rest/PedidosService/Productos/'+ empId).subscribe(
+      this.http.delete('http://localhost:8810/Pedidos/rest/PedidosService/Productos/'+ empId).subscribe(
       result => console.log(result),
       err => console.error(err));
       alert('Deleted');

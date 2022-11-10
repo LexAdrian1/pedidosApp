@@ -91,6 +91,7 @@ export class TableComponent implements OnInit {
      this.user_j = jsonProductos;
      console.log(jsonProductos);
     });*/
+    this.http.get('http://localhost:8810/Pedidos/rest/PedidosService/Productos')
     let jsonText = JSON.stringify(this.productos);
     let subJson = jsonText.split('[');
     let subJson2 = subJson[1].split(']')[0];
